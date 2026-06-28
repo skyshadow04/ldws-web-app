@@ -16,10 +16,10 @@ export default function Home() {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <p className="inline-flex rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold uppercase tracking-[0.24em] text-blue-700">
-                Abu Dhabi Domestic Workers Services
+                Abu Dhabi Leadership Domestic Workers Services
               </p>
               <h1 className="mt-6 max-w-3xl text-4xl font-semibold leading-tight text-slate-950 sm:text-5xl">
-                LeaderShip Workers Services
+                Leadership Domestic Workers Services
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
                 Empowering domestic workers with training, support, and trusted placement services to deliver safer, more reliable household care across Abu Dhabi.
@@ -70,9 +70,35 @@ export default function Home() {
           </div>
         </header>
 
+        <section className="mt-10 rounded-3xl border border-slate-200/70 bg-white/95 p-6 shadow-[0_30px_60px_rgba(15,23,42,0.06)] backdrop-blur-sm md:p-8">
+          <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-blue-600">
+                Our story
+              </p>
+              <h2 className="mt-3 text-2xl font-semibold text-slate-950">
+                See how we support families and workers
+              </h2>
+              <p className="mt-4 text-base leading-8 text-slate-600">
+                Watch our promotional video to discover how Leadership Domestic Workers Services helps create safe, reliable, and compassionate household care in Abu Dhabi.
+              </p>
+            </div>
+            <div className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-950">
+              <video
+                className="aspect-video w-full object-cover"
+                controls
+                preload="metadata"
+              >
+                <source src="/video/LDWS-Promotional Video Website.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </section>
+
         <section className="mt-10 grid gap-8 lg:grid-cols-[1.3fr_0.9fr]">
           <div className="rounded-3xl bg-white p-8 shadow-[0_30px_60px_rgba(15,23,42,0.06)]">
-            <h2 className="text-2xl font-semibold text-slate-950">About LeaderShip Workers Services</h2>
+            <h2 className="text-2xl font-semibold text-slate-950">About Leadership Domestic Workers Services</h2>
             <p className="mt-4 text-slate-600 leading-8">
               As one of Abu Dhabi’s most trusted domestic workers employment service centers, we empower workers through education, professional training, and compassionate placement. Our mission is to improve households by ensuring quality support for families and dignity for every worker.
             </p>
