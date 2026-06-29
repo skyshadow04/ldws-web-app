@@ -1,6 +1,51 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 export default function Home() {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const storageKey = "ldws-video-current-time";
+    const savedTime = Number(sessionStorage.getItem(storageKey) || 0);
+
+    if (savedTime > 0 && video.readyState >= 1) {
+      video.currentTime = savedTime;
+    }
+
+    const handleTimeUpdate = () => {
+      if (Number.isFinite(video.currentTime) && video.currentTime > 0) {
+        sessionStorage.setItem(storageKey, String(Math.floor(video.currentTime)));
+      }
+    };
+
+    const handlePlay = () => {
+      if (savedTime > 0 && video.currentTime === 0) {
+        video.currentTime = savedTime;
+      }
+    };
+
+    const handleWaiting = () => {
+      if (savedTime > 0 && video.currentTime === 0) {
+        video.currentTime = savedTime;
+      }
+    };
+
+    video.addEventListener("timeupdate", handleTimeUpdate);
+    video.addEventListener("play", handlePlay);
+    video.addEventListener("waiting", handleWaiting);
+
+    return () => {
+      video.removeEventListener("timeupdate", handleTimeUpdate);
+      video.removeEventListener("play", handlePlay);
+      video.removeEventListener("waiting", handleWaiting);
+    };
+  }, []);
+
   return (
     <div
       className="relative min-h-screen text-slate-900"
@@ -85,9 +130,11 @@ export default function Home() {
             </div>
             <div className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-950">
               <video
-                className="aspect-video w-full object-cover"
+                ref={videoRef}
+                className="aspect-video w-full object-contain"
                 controls
-                preload="metadata"
+                preload="auto"
+                playsInline
               >
                 <source src="/video/LDWS-Promotional Video Website.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
